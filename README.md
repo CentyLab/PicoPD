@@ -2,6 +2,7 @@
 Pico PD is a development board for USB Power Delivery development with Raspberry Pi Pico footprint. The board can help you negotiate voltage from USB PD 2.0, 3.0, and 3.1 with PPS (programable power supply) up to 5A of current at 20V max. The board feature input current/voltage reading as well as power switch to cut of the current to external devices.
 
 # Quick links
+[AP33772 Library](https://github.com/CentyLab/AP33772-Cpp)
 
 [PicoPD Pinout](#picopd-pinout)
 
@@ -34,7 +35,6 @@ void setup()
   pinMode(23, OUTPUT); // Load Switch
   digitalWrite(23, HIGH); // Turn on VBUS pin
 }
-
 ```
 
 # Basic AP33772 functions
@@ -79,7 +79,6 @@ Now download the latest AP33772 library as a Zip file
 
 ```
 https://github.com/CentyLab/AP33772-Cpp
-
 ```
 ![ap33772lib](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc5.png?raw=true)
 
