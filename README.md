@@ -7,7 +7,7 @@ Pico PD is a development board for USB Power Delivery development with Raspberry
 
 [Setup for AP33772 objects](#setup-for-ap33772-objects)
 
-[Basic AP3372 functions](#basic-ap33772-functions)
+[Basic AP33772 functions](#basic-ap33772-functions)
 
 [Important note](#important-note)
 
@@ -18,22 +18,26 @@ Pico PD is a development board for USB Power Delivery development with Raspberry
 
 
 # Setup for AP33772 objects
-To use AP33772 IC with the library, first you need to create a `usbpd` object. Then set up your I2C pins and start collecting the power profiles from your charger. Ensure your delay after `Wire.begin()` is more than 500ms for stable PDOs request.
+To use AP33772 IC with the library, first you need to create a `usbpd` object. Then set up your I2C pins and start collecting the power profiles from your charger. Ensure your delay after `Wire.begin()` is more than 500ms for stable PDOs request. Enable pin 23 to allow VBUS pass-through.
 ```
 AP33772 usbpd; // Automatically wire to Wire0
 
-oid setup()
+void setup()
 {
   Wire.setSDA(0);
   Wire.setSCL(1);
   Wire.begin();
   delay(1000); 		// Delay is needed for the IC to obtain PDOs
   usbpd.begin(); 	// Start pulling the PDOs from power supply
+
+  pinMode(25, OUTPUT); // Built in LED
+  pinMode(23, OUTPUT); // Load Switch
+  digitalWrite(23, HIGH); // Turn on VBUS pin
 }
 
 ```
 
-# Basic AP3372 functions
+# Basic AP33772 functions
 Common functions are:
 ```
 setVoltage(int targetVoltage)       //Set voltage, read libary for logic flow
