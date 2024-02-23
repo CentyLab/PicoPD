@@ -28,12 +28,15 @@ void setup()
   Wire.setSDA(0);
   Wire.setSCL(1);
   Wire.begin();
+  Serial.begin(115200);
   delay(1000); 		// Delay is needed for the IC to obtain PDOs
   usbpd.begin(); 	// Start pulling the PDOs from power supply
 
   pinMode(25, OUTPUT); // Built in LED
   pinMode(23, OUTPUT); // Load Switch
   digitalWrite(23, HIGH); // Turn on VBUS pin
+
+  usbpd.printPDO(); //Print out PDO to Serial port
 }
 ```
 
@@ -55,6 +58,8 @@ usbpd.setMask(OTP_EN);              //Enable Over Temp Protection flag
 
 # Important note
 After programming, you will need to disconnect the board and reconnect to the charger to re-request the PDOs profile. Else, the system will just get 5V after flashing.
+
+Calling `usbpd.printPDO()` without `Serial.begin()` can soft-brick your PicoPD. Causing the IC to be non-recognizable by your computer. You will have to use PicoProbe to reflash the chip.
 
 # Arduino IDE setup
 Open Arduino IDE, select File -> Preference
