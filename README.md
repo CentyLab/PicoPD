@@ -61,7 +61,7 @@ usbpd.setMask(OTP_EN);              //Enable Over Temp Protection flag
 # Important note
 After programming, you will need to disconnect the board and reconnect to the charger to re-request the PDOs profile. Else, the system will just get 5V after flashing.
 
-Calling `usbpd.printPDO()` without `Serial.begin()` can soft-brick your PicoPD. Causing the IC to be non-recognizable by your computer. You will have to use PicoProbe to reflash the chip.
+Calling `usbpd.printPDO()` without `Serial.begin()` can soft-brick your PicoPD. Causing the IC to be non-recognizable by your computer. You will have to use PicoProbe to reflash the chip. Check out Patrick Leiser's [PicoProbePCB](https://github.com/Patronics/PicoProbePCB) if you would like to make a stable fixture for firmware debugging.
 
 # Enable Serial Debug
 
