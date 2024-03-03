@@ -45,7 +45,7 @@ void setup()
 # Basic AP33772 functions
 Common functions are:
 ```
-setVoltage(int targetVoltage)       //Set voltage, read libary for logic flow
+setVoltage(int targetVoltage)       //Set voltage, unit in mV, read libary for logic flow
 setMaxCurrent(int targetMaxCurrent) //Allow current limit if source has that capability
 readVoltage()                       //Return voltage in mV
 readCurrent()                       //Return current in mA
@@ -117,4 +117,4 @@ Import the AP33772 library into your Arduino IDE. Sketch -> Include library -> A
 Now you start using the Example code in File -> Examples -> AP33772-Cpp-main. The example is ready to compile and flash on to your PicoPD.
 ![importlib](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc8.png?raw=true)
 
-Now you can unplug in your USB-C cable with Power Delivery 2.0/3.0/3.1. If you would like to have serial print out. Check out
+Now you can plug in your USB-C cable with Power Delivery 2.0/3.0/3.1. If you also like to have serial print out, check out [Enable Serial print for debugging](#enable-serial-debug).
