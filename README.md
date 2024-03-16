@@ -68,9 +68,10 @@ Calling `usbpd.printPDO()` without `Serial.begin()` can soft-brick your PicoPD. 
 To enable Serial debug, there are 3 main methods:
 
 **Using USB-C Power/Data splitter (easiest):** Use a USB-C Splitter that separates the USB 2.0 signal into another USB-C port. You only need USB 2.0 FullSpeed (12Mbps) for the job, but never hurts to get extra speed if needed later. 
- 
-* [USB-C PD Power Splitter](https://www.tindie.com/products/essenceeng/usb-c-pd-power-splitter/) (USB-HighSpeed) (Recommended)
-* [USB-C Splitter](https://lectronz.com/products/usb-c-splitter) (USB-FullSpeed)
+
+* [USB-C Power/Data Splitter](https://lectronz.com/products/usb-c-splitter) (USB-HighSpeed)
+* [USB-C PD Power Splitter](https://www.tindie.com/products/essenceeng/usb-c-pd-power-splitter/) (USB-HighSpeed)
+
 
 **Using the provided solder pads at the back:** Desolder the front "USB Jumper" resistors. They are just 2x 0 Ohm resistors that bridge between the RP2040 IC and the USB-C port. Then use a [USB Type A Plug Breakout Cable](https://www.adafruit.com/product/4448?gclid=Cj0KCQjwoK2mBhDzARIsADGbjeo7nigl8f-8mf8ojsnPvi8TiROBC7YXmMKpGVau8VJHeIO8NyU5nncaAs9qEALw_wcB), or make your own from any USB cable and connect to the existing pad at the back of PicoPD
 
