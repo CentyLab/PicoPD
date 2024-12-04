@@ -14,7 +14,7 @@ Pico PD is a development board for USB Power Delivery development with Raspberry
 
 [Arduino IDE setup](#arduino-ide-setup)
 
-[VScode PlatformIO setup](#vscode-platformio-setup)
+[VSCode PlatformIO setup](#vscode-platformio-setup)
 
 [Enable Serial print for debugging](#enable-serial-debug)
 
@@ -122,7 +122,7 @@ Now you start using the Example code in File -> Examples -> AP33772-Cpp-main. Th
 
 Now you can plug in your USB-C cable with Power Delivery 2.0/3.0/3.1. If you also like to have serial print out, check out [Enable Serial print for debugging](#enable-serial-debug).
 
-# VScode PlatformIO setup
+# VSCode PlatformIO setup
 After [VSCode](https://code.visualstudio.com/) installation, you will need to install PlatformIO extension.
 
 ![installplatform](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc9.png?raw=true)
