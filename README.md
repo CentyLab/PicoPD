@@ -1,5 +1,5 @@
 # PicoPD
-Pico PD is a development board for USB Power Delivery development with Raspberry Pi Pico footprint. The board can help you negotiate voltage from USB PD 2.0, 3.0, and 3.1 with PPS (programable power supply) up to 5A of current at 20V max. The board feature input current/voltage reading as well as power switch to cut of the current to external devices.
+Pico PD is a development board for USB Power Delivery development with Raspberry Pi Pico footprint. The board can help you negotiate voltage from USB PD 2.0, 3.0, and 3.1 with PPS (programable power supply) up to 5A of current at 20V max. The board feature input current/voltage/temperture reading as well as power switch to cut of the current to external devices.
 
 # Quick links
 [AP33772 Library](https://github.com/CentyLab/AP33772-Cpp)
@@ -14,6 +14,8 @@ Pico PD is a development board for USB Power Delivery development with Raspberry
 
 [Arduino IDE setup](#arduino-ide-setup)
 
+[VScode PlatformIO setup](#vscode-platformio-setup)
+
 [Enable Serial print for debugging](#enable-serial-debug)
 
 # Pin out
@@ -27,8 +29,8 @@ AP33772 usbpd; // Automatically wire to Wire0
 
 void setup()
 {
-  Wire.setSDA(0);
-  Wire.setSCL(1);
+  Wire.setSDA(0); // Set the correct SDA0 pin
+  Wire.setSCL(1); // Set the correct SCL0 pin
   Wire.begin();
   Serial.begin(115200);
   delay(1000); 		// Delay is needed for the IC to obtain PDOs
@@ -119,3 +121,53 @@ Now you start using the Example code in File -> Examples -> AP33772-Cpp-main. Th
 ![importlib](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc8.png?raw=true)
 
 Now you can plug in your USB-C cable with Power Delivery 2.0/3.0/3.1. If you also like to have serial print out, check out [Enable Serial print for debugging](#enable-serial-debug).
+
+# VScode PlatformIO setup
+After [VSCode](https://code.visualstudio.com/) installation, you will need to install PlatformIO extension.
+
+![installplatform](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc9.png?raw=true)
+
+Now create a new PlatformIO project
++ Name:WhatEverYouWantToCallit
++ Board: Pico (RasberryPi)
++ Framework: Arduino (default)
+
+Click "Finish"
+
+![newproject](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc10.png?raw=true)
+
+![boardandframework](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc11.png?raw=true)
+
+In your new project, copy this and replace everything in platformio.ini. This is how you ask PlatformIO to compile using Earlephilhower Pico core, and enable upload via USB.
+
+
+```
+[env:pico]
+platform = https://github.com/maxgerhardt/platform-raspberrypi.git
+board = pico
+framework = arduino
+board_build.core = earlephilhower
+
+;; If directly upload from PC
+upload_protocol = picotool
+```
+
+Now download the latest AP33772 library as a Zip file. Unzip and place the folder in `lib`
+
+```
+https://github.com/CentyLab/AP33772-Cpp
+```
+
+![ap33772lib](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc5.png?raw=true)
+
+Your lib folder should look like this
+
+![libstructur](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc12.png?raw=true)
+
+To try out example code, you copy the content inside `lib/Compiled for PicoPD/PPSCycling/PPSCycling.ino`, And replace everything in your `src/main.cpp`
+
+![maincpp](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc13.png?raw=true)
+
+Now you can plug the PicoPD to your computer via USB-C and hit the upload button. After this, you will have to connect a charger to PicoPD to see the voltage cycling example. If you also like to have serial print out, check out [Enable Serial print for debugging](#enable-serial-debug).
+
+![maincpp](https://github.com/CentyLab/PicoPD/blob/main/Documentation/doc14.png?raw=true)
